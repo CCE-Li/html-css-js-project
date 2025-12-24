@@ -1,5 +1,4 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import './assets/main.css'
 
 // 开发环境下启用 Mock 服务
 if (import.meta.env.DEV) {
