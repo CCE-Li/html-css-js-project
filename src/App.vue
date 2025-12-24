@@ -1,6 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
 import Example from './components/Example.vue';
+import router from './router';
 
 export default defineComponent({
   name: 'App',
@@ -11,7 +12,7 @@ export default defineComponent({
 </script>
 
 <template>
-  
+ <router-view></router-view>
   <div id="app">
     <header class="app-header">
       <h1>Vue 3 + Axios + Mock.js 示例</h1>

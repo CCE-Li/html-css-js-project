@@ -1,6 +1,7 @@
 <template lang="">
   <div>
     登录页
+    <router-view />
   </div>
 </template>
 <script>
