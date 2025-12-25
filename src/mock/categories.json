@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "电子",
+    "description": "各类最新的电子产品，包括智能手机、笔记本电脑等。",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 2,
+    "name": "配件",
+    "description": "各种电子设备的配件，如耳机、音响等。",
+    "image": "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 3,
+    "name": "电器",
+    "description": "高效节能的家用电器，包括冰箱、洗衣机等。",
+    "image": "https://images.unsplash.com/photo-1606813907291-441fe7467a56?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 4,
+    "name": "办公",
+    "description": "各类办公用品和设备，包括打印机、文具等。",
+    "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 5,
+    "name": "家具",
+    "description": "现代舒适的家居用品，包括沙发、床等。",
+    "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 6,
+    "name": "服饰",
+    "description": "时尚潮流的服饰单品，包括衣物、鞋子等。",
+    "image": "https://images.unsplash.com/photo-1495121605193-b116b5b09c65?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 7,
+    "name": "食品",
+    "description": "各类健康的食品饮料，包括零食、饮品等。",
+    "image": "https://images.unsplash.com/photo-1481391032119-d89fee407e44?auto=format&fit=crop&w=400&q=60"
+  }
+]
