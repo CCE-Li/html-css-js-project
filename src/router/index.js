@@ -36,8 +36,9 @@ const router = createRouter({
       ]
     },
     {
-      path: '/:pathMatch(.*)*',
-      redirect: '/shop/home',
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/search/index.vue'),
     },
   ],
 });
