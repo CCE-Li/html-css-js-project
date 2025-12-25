@@ -1,3 +1,6 @@
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
 import './assets/main.css'
 
 // 开发环境下启用 Mock 服务
@@ -10,6 +13,9 @@ if (import.meta.env.DEV) {
 }
 
 const app = createApp(App);
+
+// 使用路由
+app.use(router)
 
 // 全局挂载 API
 import api from './api';

@@ -1,29 +1,19 @@
 <script>
 import { defineComponent } from 'vue';
-import Example from './components/Example.vue';
 import router from './router';
 
 export default defineComponent({
   name: 'App',
-  components: {
-    Example
+  setup() {
+    // 确保路由已正确初始化
+    return {};
   }
 });
 </script>
 
 <template>
- <router-view></router-view>
   <div id="app">
-    <header class="app-header">
-      <h1>Vue 3 + Axios + Mock.js 示例</h1>
-      <p>这是一个使用 Vue 3、Axios 和 Mock.js 的示例应用</p>
-    </header>
-    <main class="app-main">
-      <Example />
-    </main>
-    <footer class="app-footer">
-      <p>© 2025 Vue Mock 示例. 所有权利保留.</p>
-    </footer>
+    <router-view />
   </div>
 </template>
 

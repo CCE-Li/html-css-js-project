@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// 删除未使用的 HomeView 导入
+// import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,34 +8,30 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      redirect: '/layout',
+      redirect: '/layout/shop', // 添加重定向到首页
     },
-    {
-      path: '/shop',
-      redirect: '/layout/shop'
-    },
+    
     {
       path: '/layout',
-      name: 'layout',
       component: () => import('../views/layout/index.vue'),
       children: [
         {
-          path: '/shop',
+          path: 'shop',
           name: 'shop',
-          component: () => import('../views/layout/comp/shoppingComp.vue'),
+          component: () => import('../views/layout/comp/shoppingComp.vue'), // 确保路径正确
         },
         {
-          path: '/cart',
+          path: 'cart',
           name: 'cart',
           component: () => import('../views/layout/comp/CartComp.vue'),
         },
         {
-          path: '/my',
+          path: 'my',
           name: 'my',
-          component: () => import('../views/comp/MyComp.vue'),
+          component: () => import('../views/layout/comp/MyComp.vue'), // 修复路径错误
         },
         {
-          path: '/classify',
+          path: 'classify',
           name: 'classify',
           component: () => import('../views/layout/comp/ClassifyComp.vue'),
         }
