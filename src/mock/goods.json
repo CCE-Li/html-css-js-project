@@ -1,0 +1,58 @@
+[
+  {
+    "id": 101,
+    "title": "智能手表",
+    "description": "全天候健康监测，支持 NFC 支付。",
+    "price": 899,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 102,
+    "title": "降噪耳机",
+    "description": "40dB 主动降噪，旅途好伴侣。",
+    "price": 1299,
+    "image": "https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 103,
+    "title": "轻薄笔记本",
+    "description": "金属机身，纯净办公体验。",
+    "price": 5999,
+    "image": "https://images.unsplash.com/photo-1527449992864-119e0d65012b?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 104,
+    "title": "咖啡机",
+    "description": "一键萃取，唤醒味蕾。",
+    "price": 1680,
+    "image": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 105,
+    "title": "极简沙发",
+    "description": "亲肤面料，客厅气质担当。",
+    "price": 3299,
+    "image": "https://images.unsplash.com/photo-1484100356142-db6ab6244067?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 106,
+    "title": "运动跑鞋",
+    "description": "缓震科技，燃烧卡路里。",
+    "price": 699,
+    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 107,
+    "title": "智能台灯",
+    "description": "四档色温，守护视力。",
+    "price": 199,
+    "image": "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=400&q=60"
+  },
+  {
+    "id": 108,
+    "title": "空气炸锅",
+    "description": "少油也酥脆，厨房新宠。",
+    "price": 499,
+    "image": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=400&q=60"
+  }
+]

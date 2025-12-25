@@ -23,7 +23,7 @@ const router = createRouter({
         {
           path: 'cart',
           name: 'cart',
-          component: () => import('../views/layout/comp/CartComp.vue'),
+          component: () => import('../views/Cart.vue'),
         },
         {
           path: 'my',
@@ -43,11 +43,10 @@ const router = createRouter({
       component: () => import('../views/login/index.vue'),
     },
     {
-      path: '/search',
-      name: 'search',
-      component: () => import('../views/search/index.vue'),
+      path: '/:pathMatch(.*)*',
+      redirect: '/shop/home',
     },
   ],
-})
+});
 
-export default router
+export default router;
