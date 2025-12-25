@@ -14,6 +14,7 @@ export default defineComponent({
 <template>
   <div id="app">
     <router-view />
+    <TabBar />
   </div>
 </template>
 
@@ -21,6 +22,6 @@ export default defineComponent({
 :global(body) {
   margin: 0;
   font-family: 'HarmonyOS Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  background: #f5f7fb;
+  background: #ffffff;
 }
 </style>
