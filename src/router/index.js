@@ -34,12 +34,7 @@ const router = createRouter({
           component: () => import('../views/layout/comp/ClassifyComp.vue'),
         }
       ]
-    },
-    {
-      path: '/search',
-      name: 'search',
-      component: () => import('../views/search/index.vue'),
-    },
+    }
   ],
 });
 
