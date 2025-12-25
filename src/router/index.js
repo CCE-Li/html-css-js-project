@@ -1,25 +1,24 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
+// 删除未使用的 HomeView 导入
+// import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      redirect: '/shop/home',
+      name: 'home',
+      redirect: '/layout/shop', // 添加重定向到首页
     },
+    
     {
-      path: '/shop',
-      component: () => import('../views/Shop.vue'),
+      path: '/layout',
+      component: () => import('../views/layout/index.vue'),
       children: [
         {
-          path: 'home',
-          name: 'home',
-          component: () => import('../views/Home.vue'),
-        },
-        {
-          path: 'category',
-          name: 'category',
-          component: () => import('../views/Category.vue'),
+          path: 'shop',
+          name: 'shop',
+          component: () => import('../views/layout/comp/shoppingComp.vue'), // 确保路径正确
         },
         {
           path: 'cart',
@@ -27,15 +26,21 @@ const router = createRouter({
           component: () => import('../views/Cart.vue'),
         },
         {
-          path: 'mine',
-          name: 'mine',
-          component: () => import('../views/Mine.vue'),
+          path: 'my',
+          name: 'my',
+          component: () => import('../views/layout/comp/MyComp.vue'), // 修复路径错误
         },
         {
-          path: '',
-          redirect: 'home',
-        },
-      ],
+          path: 'classify',
+          name: 'classify',
+          component: () => import('../views/layout/comp/ClassifyComp.vue'),
+        }
+      ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/login/index.vue'),
     },
     {
       path: '/:pathMatch(.*)*',
