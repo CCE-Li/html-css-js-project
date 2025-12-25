@@ -1,56 +1,47 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      redirect: '/layout',
+      redirect: '/shop/home',
     },
     {
       path: '/shop',
-      redirect: '/layout/shop'
-    },
-    {
-      path: '/layout',
-      name: 'layout',
-      component: () => import('../views/layout/index.vue'),
+      component: () => import('../views/Shop.vue'),
       children: [
         {
-          path: '/shop',
-          name: 'shop',
-          component: () => import('../views/layout/comp/shoppingComp.vue'),
+          path: 'home',
+          name: 'home',
+          component: () => import('../views/Home.vue'),
         },
         {
-          path: '/cart',
+          path: 'category',
+          name: 'category',
+          component: () => import('../views/Category.vue'),
+        },
+        {
+          path: 'cart',
           name: 'cart',
-          component: () => import('../views/layout/comp/CartComp.vue'),
+          component: () => import('../views/Cart.vue'),
         },
         {
-          path: '/my',
-          name: 'my',
-          component: () => import('../views/comp/MyComp.vue'),
+          path: 'mine',
+          name: 'mine',
+          component: () => import('../views/Mine.vue'),
         },
         {
-          path: '/classify',
-          name: 'classify',
-          component: () => import('../views/layout/comp/ClassifyComp.vue'),
-        }
-      ]
+          path: '',
+          redirect: 'home',
+        },
+      ],
     },
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/login/index.vue'),
-    },
-    {
-      path: '/search',
-      name: 'search',
-      component: () => import('../views/search/index.vue'),
+      path: '/:pathMatch(.*)*',
+      redirect: '/shop/home',
     },
   ],
-})
+});
 
-export default router
+export default router;
