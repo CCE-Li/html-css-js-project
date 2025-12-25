@@ -50,20 +50,26 @@ const menus = [
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+  min-height: calc(100vh - 60px);
 }
 
 .profile-card {
   display: flex;
-  gap: 16px;
-  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px;
   border-radius: 24px;
   background: linear-gradient(135deg, #fdfefe, #f2f7ff);
   border: 1px solid #e3eaf8;
+  text-align: center;
 }
 
 .avatar-wrap {
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid #fff;
@@ -76,22 +82,12 @@ const menus = [
   object-fit: cover;
 }
 
-.info .tip {
-  font-size: 12px;
-  color: #8b95ad;
-  margin-bottom: 4px;
-}
-
 .info h2 {
-  margin: 0;
+  margin: 8px 0 0;
   font-size: 20px;
   color: #172134;
-}
-
-.info .desc {
-  margin-top: 6px;
-  font-size: 13px;
-  color: #738195;
+  word-break: break-all;
+  text-align: center;
 }
 
 .service-card {
@@ -126,9 +122,44 @@ const menus = [
   color: #0c7df2;
 }
 
+.menu-group {
+  margin: 0 !important;
+}
+
 .menu-group :deep(.van-cell) {
-  font-size: 15px;
+  font-size: 16px;
   color: #111b2b;
-  padding: 14px 8px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.menu-group :deep(.van-cell):last-child {
+  margin-bottom: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 20px 16px;
+  }
+  
+  .avatar-wrap {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .info h2 {
+    font-size: 18px;
+  }
+  
+  .menu-group :deep(.van-cell) {
+    font-size: 15px;
+    padding: 12px 14px;
+  }
+  
+  .mine-view {
+    padding: 12px;
+  }
 }
 </style>

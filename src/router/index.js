@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// 删除未使用的 HomeView 导入
-// import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,11 +34,6 @@ const router = createRouter({
           component: () => import('../views/layout/comp/ClassifyComp.vue'),
         }
       ]
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/login/index.vue'),
     },
     {
       path: '/search',
