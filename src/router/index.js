@@ -43,10 +43,11 @@ const router = createRouter({
       component: () => import('../views/login/index.vue'),
     },
     {
-      path: '/:pathMatch(.*)*',
-      redirect: '/shop/home',
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/search/index.vue'),
     },
   ],
-});
+})
 
-export default router;
+export default router

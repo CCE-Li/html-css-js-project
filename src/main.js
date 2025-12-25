@@ -1,19 +1,24 @@
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
-import './assets/main.css';
-import Vant from 'vant';
-import 'vant/lib/index.css';
-import api from './api';
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import './assets/main.css'
 
+// 开发环境下启用 Mock 服务
 if (import.meta.env.DEV) {
-  import('./mock/mockServer')
-    .then(() => console.log('Mock 服务已启用'))
-    .catch(error => console.error('Mock 服务启动失败:', error));
+  import('./api/mock').then(mock => {
+    console.log('Mock 服务已启用');
+  }).catch(error => {
+    console.error('Mock 服务启动失败:', error);
+  });
 }
 
 const app = createApp(App);
-app.use(router);
-app.use(Vant);
+
+// 使用路由
+app.use(router)
+
+// 全局挂载 API
+import api from './api';
 app.config.globalProperties.$api = api;
+
 app.mount('#app');
