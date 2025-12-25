@@ -1,21 +1,10 @@
-<script>
-import { defineComponent } from 'vue';
-import router from './router';
-
-export default defineComponent({
-  name: 'App',
-  setup() {
-    // 确保路由已正确初始化
-    return {};
-  }
-});
+<script setup>
+import TabBar from './views/TabBar.vue';
 </script>
 
 <template>
-  <div id="app">
-    <router-view />
-    <TabBar />
-  </div>
+  <router-view />
+  <TabBar />
 </template>
 
 <style scoped>
