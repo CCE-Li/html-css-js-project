@@ -2,12 +2,40 @@
    <div class="shopping-page">
      <!-- 顶部搜索栏和登录/注册 -->
     <div class="header">
-      <div class="search-bar">
-        <van-icon name="search" class="search-icon" />
-        <span>在千万海外商品中搜索</span>
-      </div>
-      <div class="auth-buttons">
-        <span>登录/注册</span>
+      <div class="search-area">
+        <div class="search-bar">
+          <van-icon name="search" class="search-icon" />
+          <input
+            v-model.trim="searchQuery"
+            type="text"
+            class="search-input"
+            placeholder="在千万海外商品中搜索"
+          />
+          <button class="search-btn" @click="handleSearch">搜索</button>
+        </div>
+        <div class="search-meta">
+          <span class="result-count" v-if="searchQuery">
+            找到 {{ filteredProducts.length }} 个相关商品
+          </span>
+          <div class="hot-keywords">
+            <span class="hot-label">热门：</span>
+            <button
+              v-for="keyword in hotKeywords"
+              :key="keyword"
+              class="hot-keyword"
+              @click="applyKeyword(keyword)"
+            >
+              {{ keyword }}
+            </button>
+            <button
+              class="hot-keyword clear"
+              v-if="searchQuery"
+              @click="clearSearch"
+            >
+              清空
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <!-- 轮播图 -->
@@ -34,14 +62,18 @@
     </div>
   </div>
     <!-- 精选内容 -->
-        <div class="product-list">
-          <div class="product-item" v-for="(product, index) in featuredProducts" :key="index">
-            <img :src="product.image" alt="商品" class="product-image" />
-            <span class="product-name">{{ product.name }}</span>
-            <span class="product-price">¥{{ product.price }}</span>
-          </div>
-        </div>
+    <div v-if="filteredProducts.length" class="product-list">
+      <div class="product-item" v-for="(product, index) in filteredProducts" :key="index">
+        <img :src="product.image" alt="商品" class="product-image" />
+        <span class="product-name">{{ product.name }}</span>
+        <span class="product-price">¥{{ product.price }}</span>
+      </div>
     </div>
+    <div v-else class="empty-state">
+      <van-icon name="warning" />
+      <p>未找到相关商品，换个关键词试试吧～</p>
+    </div>
+  </div>
    
 </template>
 
@@ -62,7 +94,10 @@ export default {
       console.error('图片加载失败:', e.target.src);
     }
 
-// 精选商品数据
+    const searchQuery = ref('');
+    const hotKeywords = ref(['La Mer', '兰蔻', '精华露', '面霜', '洁面']);
+
+    // 精选商品数据
     const featuredProducts = ref([
       { image: '/images/product1.jpg', name: 'CLARINS 娇韵诗 双萃赋活精华露 50ml 黄金双瓶', price: '765' },
       { image: '/images/product2.jpg', name: 'LANCOME 兰蔻 玫瑰清滢柔肤粉水 400毫升', price: '229' },
@@ -77,6 +112,7 @@ export default {
       { image: '/images/product11.jpg', name: '商品名称11', price: '179' },
       { image: '/images/product12.jpg', name: '商品名称12', price: '389' },
     ]);
+
     // 分类图标数据
     const categories = ref([
       { image: '/images/category1.jpg', name: '分类1' },
@@ -87,9 +123,16 @@ export default {
       { image: '/images/category6.jpg', name: '分类6' },
       { image: '/images/category7.jpg', name: '分类7' },
       { image: '/images/category8.jpg', name: '分类8' },
-      
     ]);
-    
+
+    const filteredProducts = computed(() => {
+      const query = searchQuery.value.trim().toLowerCase();
+      if (!query) return featuredProducts.value;
+      return featuredProducts.value.filter((product) =>
+        product.name.toLowerCase().includes(query)
+      );
+    });
+
     // 计算属性，将分类图标按两行四列排列
     const categoryRows = computed(() => {
       const rows = [];
@@ -100,12 +143,30 @@ export default {
       return rows;
     });
 
+    const handleSearch = () => {
+      searchQuery.value = searchQuery.value.trim();
+    };
+
+    const applyKeyword = (keyword) => {
+      searchQuery.value = keyword;
+    };
+
+    const clearSearch = () => {
+      searchQuery.value = '';
+    };
+
     return {
       images,
       handleImageError,
       featuredProducts,
       categories,
-      categoryRows
+      categoryRows,
+      searchQuery,
+      hotKeywords,
+      filteredProducts,
+      handleSearch,
+      applyKeyword,
+      clearSearch
     };
   },
 };
@@ -130,8 +191,12 @@ export default {
   color: #1c1c1c;
 }
 
+.search-area {
+  flex: 1 1 0;
+  margin-right: 16px;
+}
+
 .search-bar {
-  flex: 1;
   display: flex;
   align-items: center;
   background: #ffffff;
@@ -147,20 +212,80 @@ export default {
   color: #8b8b8b;
 }
 
+.search-input {
+  flex: 1;
+  border: none;
+  font-size: 14px;
+  color: #1c1c1c;
+  background: transparent;
+  outline: none;
+}
+
+.search-btn {
+  border: none;
+  background: #1d1d1d;
+  color: #fff;
+  border-radius: 14px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: opacity 0.2s ease;
+}
+
+.search-btn:hover {
+  opacity: 0.85;
+}
+
+.search-meta {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.result-count {
+  font-size: 12px;
+  color: #777;
+}
+
+.hot-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.hot-label {
+  color: #999;
+}
+
+.hot-keyword {
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.hot-keyword:hover {
+  border-color: #1d1d1d;
+  color: #1d1d1d;
+}
+
+.hot-keyword.clear {
+  border-color: transparent;
+  color: #ff5722;
+  background: rgba(255, 87, 34, 0.08);
+}
+
 .auth-buttons {
   white-space: nowrap;
   font-weight: 600;
-  color: #232323;
-}
-
-.search-bar span {
-  font-size: 14px;
-  color: #2f2f2f;
-  font-weight: 500;
-}
-
-.auth-buttons span {
-  font-size: 14px;
   color: #232323;
 }
 
@@ -233,6 +358,19 @@ export default {
   font-weight: 700;
   font-size: 16px;
   margin-top: 5px;
+}
+
+.empty-state {
+  margin: 40px 0;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+.empty-state .van-icon {
+  font-size: 28px;
+  color: #ffb74d;
+  margin-bottom: 8px;
 }
 
 /* 新增分类图标样式 */
