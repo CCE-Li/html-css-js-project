@@ -117,6 +117,8 @@ export default {
   padding-bottom: 60px;
   max-width: 100%;
   box-sizing: border-box;
+  background: #ffffff;
+  color: #1f1f1f;
 }
 
 .header {
@@ -125,25 +127,41 @@ export default {
   align-items: center;
   padding: 10px 0;
   flex-wrap: wrap;
+  color: #1c1c1c;
 }
 
 .search-bar {
   flex: 1;
   display: flex;
   align-items: center;
-  background: #f4f4f4;
+  background: #ffffff;
   padding: 8px 15px;
   border-radius: 20px;
   margin-right: 10px;
   min-width: 0; /* 允许flex元素收缩 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .search-icon {
   margin-right: 8px;
+  color: #8b8b8b;
 }
 
 .auth-buttons {
   white-space: nowrap;
+  font-weight: 600;
+  color: #232323;
+}
+
+.search-bar span {
+  font-size: 14px;
+  color: #2f2f2f;
+  font-weight: 500;
+}
+
+.auth-buttons span {
+  font-size: 14px;
+  color: #232323;
 }
 
 .carousel-container {
@@ -169,15 +187,6 @@ export default {
   height: 100%;
   object-fit: cover; /* 保持图片比例并覆盖整个容器 */
   display: block;
-}
-
-.bottom-tabbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding-bottom: env(safe-area-inset-bottom); /* 适配iPhone X等安全区域 */
 }
 
 .product-list {
@@ -206,7 +215,7 @@ export default {
 .product-name {
   display: block;
   margin: 8px 0 5px;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.3;
   height: 40px;
   overflow: hidden;
@@ -214,13 +223,15 @@ export default {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  color: #1d1d1d;
+  font-weight: 600;
 }
 
 .product-price {
   display: block;
   color: #ff5722;
-  font-weight: bold;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 16px;
   margin-top: 5px;
 }
 
@@ -264,8 +275,9 @@ export default {
 }
 
 .category-name {
-  font-size: 12px;
-  color: #333;
+  font-size: 13px;
+  color: #1f1f1f;
+  font-weight: 600;
   text-align: center;
 }
 
