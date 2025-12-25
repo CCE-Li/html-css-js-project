@@ -14,6 +14,7 @@ export default defineComponent({
 <template>
   <div id="app">
     <router-view />
+    <TabBar />
   </div>
 </template>
 
